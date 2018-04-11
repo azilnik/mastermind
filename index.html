@@ -9,7 +9,7 @@
 <script>
 var guesses = [];
 var colors = ["red", "orange", "yellow", "green", "blue", "purple"];
-var solution = [0, 0, 0, 0];
+var solution = [0, 0, 1, 1];
 console.log(solution);
 
 function makeGuess(){
@@ -24,24 +24,36 @@ function makeGuess(){
 }
 
 function hasJustWon(){
-  return countBlackPegs() === 4;
+  return countBlackPegs() === solution.length;
 }
 
 function countBlackPegs(){
   let counter = 0;
   let currentGuess = guesses[guesses.length - 1];
-
   for (let i = 0 ; i < solution.length; i++){
     if(currentGuess[i]===solution[i]){
-      counter++
+      counter++;
     }
   };
   return counter;
 }
 
+function countWhitePegs(blackPegCount){
+  let counter = 0;
+  let currentGuess = guesses[guesses.length - 1];
+  currentGuess.forEach(function(element){
+    if (solution.includes(element)){
+      counter += 1
+    }
+  })
+
+  return counter - blackPegCount;
+}
+
+
 makeGuess();
-console.log(hasJustWon())
-console.log(countBlackPegs())
+let blackCount = countBlackPegs();
+console.log(`just won:${hasJustWon()} black:${blackCount} white:${countWhitePegs(blackCount)}`)
 </script>
 
 
