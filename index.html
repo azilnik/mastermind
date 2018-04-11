@@ -11,7 +11,17 @@ var guesses = [];
 var colors = ["red", "orange", "yellow", "green", "blue", "purple"];
 var solution = [colors[0], colors[0], colors[0], colors[0]];
 console.log(solution);
+
+function makeGuess(){
+  let currentGuess = window.prompt(`Please make your guess`);
+  let colorArray = currentGuess.split(` `);
+  console.log(colorArray); // We can kill this
+  // Add parse number thing here
+}
+
+makeGuess();
 </script>
+
 
 <style>
 
@@ -20,7 +30,7 @@ console.log(solution);
   html, body {
     margin:0;
   }
-  
+
 </style>
 
 </body>
