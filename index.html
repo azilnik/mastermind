@@ -50,10 +50,19 @@ function countWhitePegs(blackPegCount){
   return counter - blackPegCount;
 }
 
+function playGame(){
+  let maxGuesses = 10;
+  for (let guessCounter = 1; guessCounter <= maxGuesses; guessCounter++) {
+    makeGuess();
+    let blackCount = countBlackPegs();
+    console.log(`just won:${hasJustWon()} black:${blackCount} white:${countWhitePegs(blackCount)}`)
+    guessCounter++;
+  }
+  console.log(`You're out of turns. Game over. Sad.`);
+}
+playGame();
 
-makeGuess();
-let blackCount = countBlackPegs();
-console.log(`just won:${hasJustWon()} black:${blackCount} white:${countWhitePegs(blackCount)}`)
+
 </script>
 
 
