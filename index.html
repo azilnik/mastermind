@@ -13,6 +13,7 @@ var solution = [0, 0, 0, 0];
 console.log(solution);
 
 function makeGuess(){
+  // TODO: make it remove all additional spaces/characters
   let currentGuess = window.prompt(`Please make your guess`);
   let colorStrArray = currentGuess.split(` `);
   let colorArray = [];
@@ -23,11 +24,24 @@ function makeGuess(){
 }
 
 function hasJustWon(){
-  return JSON.stringify(solution)==JSON.stringify(guesses[guesses.length - 1]);
+  return countBlackPegs() === 4;
+}
+
+function countBlackPegs(){
+  let counter = 0;
+  let currentGuess = guesses[guesses.length - 1];
+
+  for (let i = 0 ; i < solution.length; i++){
+    if(currentGuess[i]===solution[i]){
+      counter++
+    }
+  };
+  return counter;
 }
 
 makeGuess();
 console.log(hasJustWon())
+console.log(countBlackPegs())
 </script>
 
 
