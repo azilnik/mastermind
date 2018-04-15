@@ -55,10 +55,15 @@ function playGame(){
   for (let guessCounter = 1; guessCounter <= maxGuesses; guessCounter++) {
     makeGuess();
     let blackCount = countBlackPegs();
-    console.log(`just won:${hasJustWon()} black:${blackCount} white:${countWhitePegs(blackCount)}`)
+    let justWon = hasJustWon();
+    console.log(`just won:${justWon} black:${blackCount} white:${countWhitePegs(blackCount)}`)
     guessCounter++;
+    if (justWon){
+      document.body.style.backgroundImage = "url('https://i1.wp.com/austenauthors.net/wp-content/uploads/2017/08/winner-stars.png')";
+      break;
+    }
   }
-  console.log(`You're out of turns. Game over. Sad.`);
+  console.log(`You're out of turns. Game over.`);
 }
 playGame();
 
